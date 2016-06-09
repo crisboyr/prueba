@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDatosEmpleadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_identificacion}" for="identificacion" />
+                    <h:inputText id="identificacion" value="#{datosEmpleadoController.selected.identificacion}" title="#{bundle.CreateDatosEmpleadoTitle_identificacion}" required="true" requiredMessage="#{bundle.CreateDatosEmpleadoRequiredMessage_identificacion}"/>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_primerNombre}" for="primerNombre" />
+                    <h:inputText id="primerNombre" value="#{datosEmpleadoController.selected.primerNombre}" title="#{bundle.CreateDatosEmpleadoTitle_primerNombre}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_segundoNombre}" for="segundoNombre" />
+                    <h:inputText id="segundoNombre" value="#{datosEmpleadoController.selected.segundoNombre}" title="#{bundle.CreateDatosEmpleadoTitle_segundoNombre}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_primerApellido}" for="primerApellido" />
+                    <h:inputText id="primerApellido" value="#{datosEmpleadoController.selected.primerApellido}" title="#{bundle.CreateDatosEmpleadoTitle_primerApellido}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_segundoApellido}" for="segundoApellido" />
+                    <h:inputText id="segundoApellido" value="#{datosEmpleadoController.selected.segundoApellido}" title="#{bundle.CreateDatosEmpleadoTitle_segundoApellido}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{datosEmpleadoController.selected.fechaNacimiento}" title="#{bundle.CreateDatosEmpleadoTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_direccionResidencia}" for="direccionResidencia" />
+                    <h:inputText id="direccionResidencia" value="#{datosEmpleadoController.selected.direccionResidencia}" title="#{bundle.CreateDatosEmpleadoTitle_direccionResidencia}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_salario}" for="salario" />
+                    <h:inputText id="salario" value="#{datosEmpleadoController.selected.salario}" title="#{bundle.CreateDatosEmpleadoTitle_salario}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_emailPersonal}" for="emailPersonal" />
+                    <h:inputText id="emailPersonal" value="#{datosEmpleadoController.selected.emailPersonal}" title="#{bundle.CreateDatosEmpleadoTitle_emailPersonal}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_emailCorporativo}" for="emailCorporativo" />
+                    <h:inputText id="emailCorporativo" value="#{datosEmpleadoController.selected.emailCorporativo}" title="#{bundle.CreateDatosEmpleadoTitle_emailCorporativo}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_numeroDeCuenta}" for="numeroDeCuenta" />
+                    <h:inputText id="numeroDeCuenta" value="#{datosEmpleadoController.selected.numeroDeCuenta}" title="#{bundle.CreateDatosEmpleadoTitle_numeroDeCuenta}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_fechaIngreso}" for="fechaIngreso" />
+                    <h:inputText id="fechaIngreso" value="#{datosEmpleadoController.selected.fechaIngreso}" title="#{bundle.CreateDatosEmpleadoTitle_fechaIngreso}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_jefeInmediato}" for="jefeInmediato" />
+                    <h:inputText id="jefeInmediato" value="#{datosEmpleadoController.selected.jefeInmediato}" title="#{bundle.CreateDatosEmpleadoTitle_jefeInmediato}" />
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_area}" for="area" />
+                    <h:selectOneMenu id="area" value="#{datosEmpleadoController.selected.area}" title="#{bundle.CreateDatosEmpleadoTitle_area}" >
+                        <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_idBanco}" for="idBanco" />
+                    <h:selectOneMenu id="idBanco" value="#{datosEmpleadoController.selected.idBanco}" title="#{bundle.CreateDatosEmpleadoTitle_idBanco}" >
+                        <f:selectItems value="#{bancoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_cargo}" for="cargo" />
+                    <h:selectOneMenu id="cargo" value="#{datosEmpleadoController.selected.cargo}" title="#{bundle.CreateDatosEmpleadoTitle_cargo}" >
+                        <f:selectItems value="#{cargoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_ciudadExpedicionDoc}" for="ciudadExpedicionDoc" />
+                    <h:selectOneMenu id="ciudadExpedicionDoc" value="#{datosEmpleadoController.selected.ciudadExpedicionDoc}" title="#{bundle.CreateDatosEmpleadoTitle_ciudadExpedicionDoc}" >
+                        <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_idCiudad}" for="idCiudad" />
+                    <h:selectOneMenu id="idCiudad" value="#{datosEmpleadoController.selected.idCiudad}" title="#{bundle.CreateDatosEmpleadoTitle_idCiudad}" >
+                        <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_cajaCompensacion}" for="cajaCompensacion" />
+                    <h:selectOneMenu id="cajaCompensacion" value="#{datosEmpleadoController.selected.cajaCompensacion}" title="#{bundle.CreateDatosEmpleadoTitle_cajaCompensacion}" >
+                        <f:selectItems value="#{cajaCompensacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_idDepartamento}" for="idDepartamento" />
+                    <h:selectOneMenu id="idDepartamento" value="#{datosEmpleadoController.selected.idDepartamento}" title="#{bundle.CreateDatosEmpleadoTitle_idDepartamento}" >
+                        <f:selectItems value="#{departamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_eps}" for="eps" />
+                    <h:selectOneMenu id="eps" value="#{datosEmpleadoController.selected.eps}" title="#{bundle.CreateDatosEmpleadoTitle_eps}" >
+                        <f:selectItems value="#{epsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{datosEmpleadoController.selected.idUsuario}" title="#{bundle.CreateDatosEmpleadoTitle_idUsuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_estadoCivil}" for="estadoCivil" />
+                    <h:selectOneMenu id="estadoCivil" value="#{datosEmpleadoController.selected.estadoCivil}" title="#{bundle.CreateDatosEmpleadoTitle_estadoCivil}" >
+                        <f:selectItems value="#{estadoCivilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_idFondo}" for="idFondo" />
+                    <h:selectOneMenu id="idFondo" value="#{datosEmpleadoController.selected.idFondo}" title="#{bundle.CreateDatosEmpleadoTitle_idFondo}" >
+                        <f:selectItems value="#{fondoPensionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_tipoDocumento}" for="tipoDocumento" />
+                    <h:selectOneMenu id="tipoDocumento" value="#{datosEmpleadoController.selected.tipoDocumento}" title="#{bundle.CreateDatosEmpleadoTitle_tipoDocumento}" >
+                        <f:selectItems value="#{tipoDocumentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateDatosEmpleadoLabel_telefono}" for="telefono" />
+                    <h:selectOneMenu id="telefono" value="#{datosEmpleadoController.selected.telefono}" title="#{bundle.CreateDatosEmpleadoTitle_telefono}" >
+                        <f:selectItems value="#{telefonoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{datosEmpleadoController.create}" value="#{bundle.CreateDatosEmpleadoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{datosEmpleadoController.prepareList}" value="#{bundle.CreateDatosEmpleadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDatosEmpleadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDocumentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDocumentoLabel_idDocumento}" for="idDocumento" />
+                    <h:inputText id="idDocumento" value="#{documentoController.selected.idDocumento}" title="#{bundle.EditDocumentoTitle_idDocumento}" required="true" requiredMessage="#{bundle.EditDocumentoRequiredMessage_idDocumento}"/>
+                    <h:outputLabel value="#{bundle.EditDocumentoLabel_ruta}" for="ruta" />
+                    <h:inputText id="ruta" value="#{documentoController.selected.ruta}" title="#{bundle.EditDocumentoTitle_ruta}" />
+                    <h:outputLabel value="#{bundle.EditDocumentoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{documentoController.selected.nombre}" title="#{bundle.EditDocumentoTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditDocumentoLabel_identificacion}" for="identificacion" />
+                    <h:selectOneMenu id="identificacion" value="#{documentoController.selected.identificacion}" title="#{bundle.EditDocumentoTitle_identificacion}" required="true" requiredMessage="#{bundle.EditDocumentoRequiredMessage_identificacion}">
+                        <f:selectItems value="#{datosEmpleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{documentoController.update}" value="#{bundle.EditDocumentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDocumentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{documentoController.prepareList}" value="#{bundle.EditDocumentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDocumentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

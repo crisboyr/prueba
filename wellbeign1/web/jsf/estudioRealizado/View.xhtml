@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEstudioRealizadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEstudioRealizadoLabel_idEstudio}"/>
+                    <h:outputText value="#{estudioRealizadoController.selected.idEstudio}" title="#{bundle.ViewEstudioRealizadoTitle_idEstudio}"/>
+                    <h:outputText value="#{bundle.ViewEstudioRealizadoLabel_tituloObtenido}"/>
+                    <h:outputText value="#{estudioRealizadoController.selected.tituloObtenido}" title="#{bundle.ViewEstudioRealizadoTitle_tituloObtenido}"/>
+                    <h:outputText value="#{bundle.ViewEstudioRealizadoLabel_fechaInicio}"/>
+                    <h:outputText value="#{estudioRealizadoController.selected.fechaInicio}" title="#{bundle.ViewEstudioRealizadoTitle_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEstudioRealizadoLabel_fechaFin}"/>
+                    <h:outputText value="#{estudioRealizadoController.selected.fechaFin}" title="#{bundle.ViewEstudioRealizadoTitle_fechaFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEstudioRealizadoLabel_lugar}"/>
+                    <h:outputText value="#{estudioRealizadoController.selected.lugar}" title="#{bundle.ViewEstudioRealizadoTitle_lugar}"/>
+                    <h:outputText value="#{bundle.ViewEstudioRealizadoLabel_identificacion}"/>
+                    <h:outputText value="#{estudioRealizadoController.selected.identificacion}" title="#{bundle.ViewEstudioRealizadoTitle_identificacion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estudioRealizadoController.destroyAndView}" value="#{bundle.ViewEstudioRealizadoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEstudioRealizadoEditLink}"/>
+                <br />
+                <h:commandLink action="#{estudioRealizadoController.prepareCreate}" value="#{bundle.ViewEstudioRealizadoCreateLink}" />
+                <br />
+                <h:commandLink action="#{estudioRealizadoController.prepareList}" value="#{bundle.ViewEstudioRealizadoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEstudioRealizadoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

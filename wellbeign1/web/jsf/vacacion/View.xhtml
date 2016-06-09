@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVacacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVacacionLabel_idVacaciones}"/>
+                    <h:outputText value="#{vacacionController.selected.idVacaciones}" title="#{bundle.ViewVacacionTitle_idVacaciones}"/>
+                    <h:outputText value="#{bundle.ViewVacacionLabel_fechaInicial}"/>
+                    <h:outputText value="#{vacacionController.selected.fechaInicial}" title="#{bundle.ViewVacacionTitle_fechaInicial}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVacacionLabel_fechaFinal}"/>
+                    <h:outputText value="#{vacacionController.selected.fechaFinal}" title="#{bundle.ViewVacacionTitle_fechaFinal}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVacacionLabel_periodo}"/>
+                    <h:outputText value="#{vacacionController.selected.periodo}" title="#{bundle.ViewVacacionTitle_periodo}"/>
+                    <h:outputText value="#{bundle.ViewVacacionLabel_estadoPeriodo}"/>
+                    <h:outputText value="#{vacacionController.selected.estadoPeriodo}" title="#{bundle.ViewVacacionTitle_estadoPeriodo}"/>
+                    <h:outputText value="#{bundle.ViewVacacionLabel_identificacion}"/>
+                    <h:outputText value="#{vacacionController.selected.identificacion}" title="#{bundle.ViewVacacionTitle_identificacion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vacacionController.destroyAndView}" value="#{bundle.ViewVacacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVacacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{vacacionController.prepareCreate}" value="#{bundle.ViewVacacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{vacacionController.prepareList}" value="#{bundle.ViewVacacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVacacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBeneficioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBeneficioLabel_idBeneficios}" for="idBeneficios" />
+                    <h:inputText id="idBeneficios" value="#{beneficioController.selected.idBeneficios}" title="#{bundle.EditBeneficioTitle_idBeneficios}" required="true" requiredMessage="#{bundle.EditBeneficioRequiredMessage_idBeneficios}"/>
+                    <h:outputLabel value="#{bundle.EditBeneficioLabel_fechaRecibido}" for="fechaRecibido" />
+                    <h:inputText id="fechaRecibido" value="#{beneficioController.selected.fechaRecibido}" title="#{bundle.EditBeneficioTitle_fechaRecibido}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBeneficioLabel_identificacion}" for="identificacion" />
+                    <h:selectOneMenu id="identificacion" value="#{beneficioController.selected.identificacion}" title="#{bundle.EditBeneficioTitle_identificacion}" >
+                        <f:selectItems value="#{datosEmpleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBeneficioLabel_tipoBeneficio}" for="tipoBeneficio" />
+                    <h:selectOneMenu id="tipoBeneficio" value="#{beneficioController.selected.tipoBeneficio}" title="#{bundle.EditBeneficioTitle_tipoBeneficio}" >
+                        <f:selectItems value="#{tipoBeneficioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{beneficioController.update}" value="#{bundle.EditBeneficioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBeneficioViewLink}"/>
+                <br />
+                <h:commandLink action="#{beneficioController.prepareList}" value="#{bundle.EditBeneficioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBeneficioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

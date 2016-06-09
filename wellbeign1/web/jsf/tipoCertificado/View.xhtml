@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoCertificadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoCertificadoLabel_idTipoCertificados}"/>
+                    <h:outputText value="#{tipoCertificadoController.selected.idTipoCertificados}" title="#{bundle.ViewTipoCertificadoTitle_idTipoCertificados}"/>
+                    <h:outputText value="#{bundle.ViewTipoCertificadoLabel_descripcion}"/>
+                    <h:outputText value="#{tipoCertificadoController.selected.descripcion}" title="#{bundle.ViewTipoCertificadoTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewTipoCertificadoLabel_disponible}"/>
+                    <h:outputText value="#{tipoCertificadoController.selected.disponible}" title="#{bundle.ViewTipoCertificadoTitle_disponible}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoCertificadoController.destroyAndView}" value="#{bundle.ViewTipoCertificadoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoCertificadoEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoCertificadoController.prepareCreate}" value="#{bundle.ViewTipoCertificadoCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoCertificadoController.prepareList}" value="#{bundle.ViewTipoCertificadoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoCertificadoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBonificacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBonificacionEmpty}" rendered="#{bonificacionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{bonificacionController.items.rowCount > 0}">
+                    <h:outputText value="#{bonificacionController.pagination.pageFirstItem + 1}..#{bonificacionController.pagination.pageLastItem + 1}/#{bonificacionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{bonificacionController.previous}" value="#{bundle.Previous} #{bonificacionController.pagination.pageSize}" rendered="#{bonificacionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{bonificacionController.next}" value="#{bundle.Next} #{bonificacionController.pagination.pageSize}" rendered="#{bonificacionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{bonificacionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBonificacionTitle_idBonificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBonificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBonificacionTitle_fechaEntrega}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaEntrega}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBonificacionTitle_cantidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cantidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBonificacionTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBonificacionTitle_identificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.identificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBonificacionTitle_idSolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSolicitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBonificacionTitle_tipoBonificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoBonificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{bonificacionController.prepareView}" value="#{bundle.ListBonificacionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bonificacionController.prepareEdit}" value="#{bundle.ListBonificacionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bonificacionController.destroy}" value="#{bundle.ListBonificacionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{bonificacionController.prepareCreate}" value="#{bundle.ListBonificacionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBonificacionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewHistorialPensionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHistorialPensionLabel_idHistorialPensiones}"/>
+                    <h:outputText value="#{historialPensionController.selected.idHistorialPensiones}" title="#{bundle.ViewHistorialPensionTitle_idHistorialPensiones}"/>
+                    <h:outputText value="#{bundle.ViewHistorialPensionLabel_fechaIngreso}"/>
+                    <h:outputText value="#{historialPensionController.selected.fechaIngreso}" title="#{bundle.ViewHistorialPensionTitle_fechaIngreso}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHistorialPensionLabel_fechaSalida}"/>
+                    <h:outputText value="#{historialPensionController.selected.fechaSalida}" title="#{bundle.ViewHistorialPensionTitle_fechaSalida}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewHistorialPensionLabel_identificacion}"/>
+                    <h:outputText value="#{historialPensionController.selected.identificacion}" title="#{bundle.ViewHistorialPensionTitle_identificacion}"/>
+                    <h:outputText value="#{bundle.ViewHistorialPensionLabel_idFondo}"/>
+                    <h:outputText value="#{historialPensionController.selected.idFondo}" title="#{bundle.ViewHistorialPensionTitle_idFondo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{historialPensionController.destroyAndView}" value="#{bundle.ViewHistorialPensionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewHistorialPensionEditLink}"/>
+                <br />
+                <h:commandLink action="#{historialPensionController.prepareCreate}" value="#{bundle.ViewHistorialPensionCreateLink}" />
+                <br />
+                <h:commandLink action="#{historialPensionController.prepareList}" value="#{bundle.ViewHistorialPensionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewHistorialPensionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

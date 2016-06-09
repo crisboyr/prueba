@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBonificacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBonificacionLabel_idBonificacion}" for="idBonificacion" />
+                    <h:inputText id="idBonificacion" value="#{bonificacionController.selected.idBonificacion}" title="#{bundle.EditBonificacionTitle_idBonificacion}" required="true" requiredMessage="#{bundle.EditBonificacionRequiredMessage_idBonificacion}"/>
+                    <h:outputLabel value="#{bundle.EditBonificacionLabel_fechaEntrega}" for="fechaEntrega" />
+                    <h:inputText id="fechaEntrega" value="#{bonificacionController.selected.fechaEntrega}" title="#{bundle.EditBonificacionTitle_fechaEntrega}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBonificacionLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{bonificacionController.selected.cantidad}" title="#{bundle.EditBonificacionTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.EditBonificacionLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{bonificacionController.selected.valor}" title="#{bundle.EditBonificacionTitle_valor}" />
+                    <h:outputLabel value="#{bundle.EditBonificacionLabel_identificacion}" for="identificacion" />
+                    <h:selectOneMenu id="identificacion" value="#{bonificacionController.selected.identificacion}" title="#{bundle.EditBonificacionTitle_identificacion}" >
+                        <f:selectItems value="#{datosEmpleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBonificacionLabel_idSolicitud}" for="idSolicitud" />
+                    <h:selectOneMenu id="idSolicitud" value="#{bonificacionController.selected.idSolicitud}" title="#{bundle.EditBonificacionTitle_idSolicitud}" >
+                        <f:selectItems value="#{solicitudController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBonificacionLabel_tipoBonificacion}" for="tipoBonificacion" />
+                    <h:selectOneMenu id="tipoBonificacion" value="#{bonificacionController.selected.tipoBonificacion}" title="#{bundle.EditBonificacionTitle_tipoBonificacion}" >
+                        <f:selectItems value="#{tipoBonificacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{bonificacionController.update}" value="#{bundle.EditBonificacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBonificacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{bonificacionController.prepareList}" value="#{bundle.EditBonificacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBonificacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

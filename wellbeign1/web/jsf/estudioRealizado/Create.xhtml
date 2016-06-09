@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEstudioRealizadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEstudioRealizadoLabel_idEstudio}" for="idEstudio" />
+                    <h:inputText id="idEstudio" value="#{estudioRealizadoController.selected.idEstudio}" title="#{bundle.CreateEstudioRealizadoTitle_idEstudio}" required="true" requiredMessage="#{bundle.CreateEstudioRealizadoRequiredMessage_idEstudio}"/>
+                    <h:outputLabel value="#{bundle.CreateEstudioRealizadoLabel_tituloObtenido}" for="tituloObtenido" />
+                    <h:inputText id="tituloObtenido" value="#{estudioRealizadoController.selected.tituloObtenido}" title="#{bundle.CreateEstudioRealizadoTitle_tituloObtenido}" />
+                    <h:outputLabel value="#{bundle.CreateEstudioRealizadoLabel_fechaInicio}" for="fechaInicio" />
+                    <h:inputText id="fechaInicio" value="#{estudioRealizadoController.selected.fechaInicio}" title="#{bundle.CreateEstudioRealizadoTitle_fechaInicio}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEstudioRealizadoLabel_fechaFin}" for="fechaFin" />
+                    <h:inputText id="fechaFin" value="#{estudioRealizadoController.selected.fechaFin}" title="#{bundle.CreateEstudioRealizadoTitle_fechaFin}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEstudioRealizadoLabel_lugar}" for="lugar" />
+                    <h:inputText id="lugar" value="#{estudioRealizadoController.selected.lugar}" title="#{bundle.CreateEstudioRealizadoTitle_lugar}" />
+                    <h:outputLabel value="#{bundle.CreateEstudioRealizadoLabel_identificacion}" for="identificacion" />
+                    <h:selectOneMenu id="identificacion" value="#{estudioRealizadoController.selected.identificacion}" title="#{bundle.CreateEstudioRealizadoTitle_identificacion}" >
+                        <f:selectItems value="#{datosEmpleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estudioRealizadoController.create}" value="#{bundle.CreateEstudioRealizadoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{estudioRealizadoController.prepareList}" value="#{bundle.CreateEstudioRealizadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEstudioRealizadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
