@@ -11,7 +11,15 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo 'Hola Mundo';
+       require_once './clases/SeleccionFutbol.php';
+       require_once './clases/Entrenador.php';
+       require_once './clases/Futbolista.php';
+        $entrenador=new Entrenador(1, "Viente", "Del Bosque", 60);
+        $futbolista=new Futbolista(2, "Andres", "Iniesta", 29, 6, "Interior Derecho");
+        $entrenador->registrarIntegrante($entrenador);
+        $entrenador->registrarIntegrante($futbolista);
+        echo '<h1>Todos los integrantes viajan para jugar un partido</h1>';
+        $entrenador->mostrarIntegrantes();
         ?>
     </body>
 </html>
