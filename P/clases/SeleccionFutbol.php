@@ -59,7 +59,7 @@ abstract class SeleccionFutbol {
     }
 
         public function viajar(){
-        echo 'Viajando...';
+        echo 'Viajando en avion...';
     }
     public abstract function entrenar() ;
     public abstract function jugar() ;
